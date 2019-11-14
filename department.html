@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="images/logo.png" rel="icon"/>
+        <title>Online CLINIC Management System</title>
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript">
+                $(document).ready(function()
+                {
+
+                        $('#doctorlist').show();
+                        $('.doctor li:first-child a').addClass('active');
+                        $('.doctor li a').click(function(e){
+
+                                var tabDiv=this.hash;
+                                $('.doctor li a').removeClass('active');
+                                $(this).addClass('.active');
+                                $('.switchgroup').hide();
+                                $(tabDiv).fadeIn();
+                                e.preventDefault();
+
+                        });
+
+
+                });
+        </script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            
+        <!--- Header Start -------->
+        <div class="row header">
+
+            <div class="col-md-10">
+                    <h2 >CLINIC Mangement System</h3>
+            </div>
+
+            <div class="col-md-2 ">
+                <ul class="nav nav-pills ">
+                    <li class="dropdown dmenu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+                            <ul class="dropdown-menu ">
+                                <li><a href="profile.html">Change Profile</a></li>
+                                <li role="separator" class="divider"></li>
+                                 <li><a href="index.html">Logout</a></li>
+                            </ul>
+                     </li>
+                </ul>
+            </div>
+        </div>
+  <!--- Header Ends --------->
+       
+        <div class="row">
+    
+        <!----- Menu Area Start ------>
+        <div class="col-md-2 menucontent">
+          
+            <a href="#"><h1>Dashboard</h1></a>
+                
+                <ul class="nav nav-pills nav-stacked">
+                  <li role="presentation"><a href="department.html">Department</a></li>
+                  <li role="presentation"><a href="doctor.html">Doctors</a></li>
+				  <li role="presentation"><a href="patients.html ">Patients</a></li>
+                  <li role="presentation"><a href="nurse.html">Nurse</a></li>
+                  <li role="presentation"><a href="profile.html">Profile</a></li>
+                </ul>
+        </div>
+        <!---- Menu Ares Ends  -------->
+        
+<!-------   Content Area start  --------->
+<div class="col-md-10 maincontent" >
+
+    <!-----------  Content Menu Tab Start   ------------>
+    <div class="panel panel-default contentinside">
+        <div class="panel-heading">Manage Department</div>
+
+        <!----------------   Panel Body Start   --------------->
+        <div class="panel-body">
+            <ul class="nav nav-tabs doctor">
+                    <li role="presentation"><a href="#doctorlist">Department List</a></li>
+                    <li role="presentation"><a href="#adddoctor">Add Department</a></li>
+            </ul>
+
+            <!----------------   Display Department Data List start   --------------->
+           
+               <div id="doctorlist" class="switchgroup">
+                   <table class="table table-bordered table-hover">
+                   <tr class="active">
+                           <td>Department ID</td>
+                           <td>Department Name</td>
+                           <td>Department Description</td>
+                           <td>Options</td>
+                   </tr>
+                   <tr>
+                           <td>123</td>
+                           <td>Neurology</td>
+                           <td>desc of neurology dept.</td>
+                           <td>
+						    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+                            <a  href="#" class="btn btn-danger" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                           
+						   </td>
+                   </tr>
+           
+                  </table>
+               </div>  
+              <!----------------   Display Department Data List ends   --------------->
+              
+              <!------ Edit Department Modal Start ---------->
+                            
+             
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                       
+                    
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Edit Department Information</h4>
+                        </div>
+                        
+                        <div class="modal-body">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                             <form class="form-horizontal" action="#">
+                                    
+                                <div class="form-group">
+                                    <label  class="col-sm-4 control-label">Department ID</label>
+                                    <div class="col-sm-4">
+                                        <input type="number" class="form-control" name="deptId" value="" readonly="readonly">
+                                    </div>
+                                </div>
+                                    
+                                <div class="form-group">
+                                    <label  class="col-sm-4 control-label">Department Name</label>
+                                    <div class="col-sm-4">
+                                      <input type="text" class="form-control" name="deptName" value="" >
+                                    </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                       <label class="col-sm-4 control-label">Department Description</label>
+                                       <div class="col-sm-4">
+                                         <input type="text" class="form-control" name="deptDesc" value="">
+                                       </div>
+                                 </div>
+                               
+                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <input type="submit" class="btn btn-primary" value="Update"></button>
+                                 </div>
+                            </form>
+      </div>
+                         </div>
+                         </div>
+                    </div>
+                 </div>
+               </div>
+<!----------------   Modal ends here  --------------->
+
+        
+              
+              
+              <!----------------   Add Department Start   --------------->
+               <div id="adddoctor" class="switchgroup">
+                   <div class="panel panel-default">
+                       <div class="panel-body">
+                           <form class="form-horizontal" action="#">
+
+                            <div class="form-group">
+                                <label  class="col-sm-4 control-label">Department ID</label>
+                                <div class="col-sm-4">
+                                  <input type="number" class="form-control" name="deptId" placeholder="Enter Department Name">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label  class="col-sm-4 control-label">Department Name</label>
+                                <div class="col-sm-4">
+                                  <input type="text" class="form-control" name="deptName" placeholder="Enter Department Name">
+                                </div>
+                             </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">Department Description</label>
+                                <div class="col-sm-4">
+                                   <input type="text" class="form-control" name="deptDesc" placeholder="Enter Department Description here...">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-4 col-sm-10">
+                                  <button type="submit" class="btn btn-primary">Add Department</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                   <!----------------   Add Department Ends   --------------->
+        </div>
+        <!----------------   Panel Body Ends   --------------->
+    </div>
+    <!-----------  Content Menu Tab Ends   ------------>
+</div>
+<!-------   Content Area Ends  --------->
+        </div>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
